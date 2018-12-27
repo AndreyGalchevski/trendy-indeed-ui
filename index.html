@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <title>Trendy Indeed</title>
+  </head>
+
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="Api.js"></script>    
+    <script src="Plot.js"></script>
+    <script src="App.js"></script>
+    <script src="EventListenerAttacher.js"></script>
+    <script src="Store.js"></script>
+    <script src="index.js"></script>
+    <div id="app" class="container center">
+      <div class="row">
+        <h3>Welcome To Trendy Indeed</h3>
+        <div class="input-field col s4 offset-s4">
+          <select id="country-select">
+            <option value="" disabled selected>Choose country</option>
+            <option value="il" selected>Israel</option>
+            <option value="uk">United Kingdom</option>
+            <option value="ie">Ireland</option>
+          </select>
+        </div>
+      </div>
+      <div id="graph"></div>
+    </div>
+  </body>
+</html>
