@@ -38,7 +38,7 @@ class Plot {
         x: months[month],
         y: data
           .filter(item => item.technology === tech)
-          .map(item => item.average),
+          .map(item => Math.round(item.average)),
         type: 'scatter',
         mode: 'lines',
         name: tech

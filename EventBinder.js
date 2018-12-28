@@ -1,4 +1,4 @@
-class EventListenerAttacher {
+class EventBinder {
   static init() {
     document.addEventListener('DOMContentLoaded', () => {
       this.initMaterializeCss();

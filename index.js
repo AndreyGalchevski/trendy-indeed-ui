@@ -1,7 +1,6 @@
 (async () => {
   const store = new Store();
   store.init();
-  console.log(store);
-  EventListenerAttacher.init();
+  EventBinder.init();
   App.init();
-})()
+})();
