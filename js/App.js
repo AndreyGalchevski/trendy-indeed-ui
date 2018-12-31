@@ -44,7 +44,6 @@ class App {
       newOption.innerHTML = country.name;
       countrySelect.appendChild(newOption);
     }
-    console.log(countrySelect);
   }
   async init() {
     this._countries = await Api.fetchCountries();
