@@ -1,14 +1,36 @@
 class Plot {
   constructor(data) {
-    this.data = data;
+    this._data = data;
+    this._months = {
+      1: 'January',
+      2: 'February',
+      3: 'March',
+      4: 'April',
+      5: 'May',
+      6: 'June',
+      7: 'July',
+      8: 'August',
+      9: 'September',
+      10: 'October',
+      11: 'November',
+      12: 'December'
+    };
+  }
+
+  get data () {
+    return this._data;
+  }
+
+  get months () {
+    return this._months;
   }
 
   draw() {
     const layout = this.initLayout();
-    const plotData = this.createPlotData(this.data);
+    const plotData = this.createPlotData();
   
     Plotly.newPlot('graph', plotData, layout, { responsive: true });
-  }
+  };
 
   initLayout() {
     return {
@@ -26,17 +48,16 @@ class Plot {
     };
   };
 
-  createPlotData(data) {
+  createPlotData() {
     let plotData = [];
-  
-    technologies.forEach(tech => {
-      let month = data
+    app.technologies.forEach(tech => {
+      let month = this.data
         .filter(item => item.technology === tech)
         .map(item => item.month);
   
       let trace = {
-        x: months[month],
-        y: data
+        x: this.months[month],
+        y: this.data
           .filter(item => item.technology === tech)
           .map(item => Math.round(item.average)),
         type: 'scatter',

@@ -1,22 +1,17 @@
 class EventBinder {
   static init() {
     document.addEventListener('DOMContentLoaded', () => {
-      this.initMaterializeCss();
-      this.initCountrySelect();
+      this.bindCountrySelect();
     }, false);
   };
 
-  static initMaterializeCss() {
-    M.AutoInit();
-  };
-
-  static initCountrySelect() {
+  static bindCountrySelect() {
     const countrySelect = document.querySelector('select[id="country-select"]');
     countrySelect.addEventListener('change', async e => {
       const selectedCountry = e.target.value;
-      const monthlyAverages = await Api.fetchMonthlyAverages(thisYear, selectedCountry);
+      const monthlyAverages = await Api.fetchMonthlyAverages(app.currentYear, selectedCountry);
       const plot = new Plot(monthlyAverages);
-      plot.draw(); 
+      plot.draw();
     });
   }
 };

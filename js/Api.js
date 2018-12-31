@@ -2,7 +2,7 @@ class Api {
   static async fetchCountries() {
     try {
       let response = await axios.get('https://trendy-indeed-api.herokuapp.com/api/countries');
-      return response.data.map(item => item.name);
+      return response.data;
     } catch (error) {
       throw error;
     }
