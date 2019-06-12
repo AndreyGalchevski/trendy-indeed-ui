@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import Chart from 'chart.js';
 
 import { MONTHS } from '../../constants/months';
 
 import Api from '../../Api';
+import Chart from '../common/Chart/Chart';
 
-function Graph() {
-  const [country, setCountry] = useState('il');
+function MonthlyByCountry() {
+  const [chartData, setChartData] = useState({
+    labels: [],
+    datasets: []
+  });
 
   useEffect(() => {
     async function init() {
       const technologiesResponse = await Api.get('technologies');
       const technologies = technologiesResponse.data;
 
-      const statsResponse = await Api.get(`stats?year=2019&country=${country}`);
+      const statsResponse = await Api.get('stats?year=2019&country=il');
       const monthlyAverages = statsResponse.data;
 
       const datasets = technologies.map(tech => {
@@ -28,31 +31,30 @@ function Graph() {
         };
       });
 
+      setChartData({ ...chartData, datasets });
+
       const currentMonth = datasets[0].data.length;
       const labels = Object.keys(MONTHS)
         .filter(key => key <= currentMonth)
         .map(key => MONTHS[key]);
 
-      const ctx = document.getElementById('myChart').getContext('2d');
-
-      const chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels,
-          datasets
-        },
-        options: {}
-      });
+      setChartData({ ...chartData, labels });
     }
 
     init();
   }, []);
 
   return (
-    <div>
-      <canvas id="myChart" />
-    </div>
+    chartData.labels.length > 0 &&
+    chartData.datasets.length > 0 && (
+      <Chart
+        id="monthly-by-country"
+        type="line"
+        labels={chartData.labels}
+        datasets={chartData.datasets}
+      />
+    )
   );
 }
 
-export default Graph;
+export default MonthlyByCountry;

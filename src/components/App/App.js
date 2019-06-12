@@ -1,11 +1,15 @@
 import React from 'react';
-import Graph from '../Graph/Graph';
+import { Route } from 'react-router-dom';
+
+import Home from '../Home/Home';
+import MonthlyByCountry from '../MonthlyByCountry/MonthlyByCountry';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Graph />
+      <Route exact path="/" component={Home} />
+      <Route path="/monthly-by-country" component={MonthlyByCountry} />
     </div>
   );
 }
