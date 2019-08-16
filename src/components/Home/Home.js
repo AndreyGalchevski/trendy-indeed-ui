@@ -7,8 +7,10 @@ function Home() {
       <div className="container">
         <h4>Trendy Indeed</h4>
         <div>
-          <Link to="monthly-by-country">Monthly By Country</Link>
-          <Link to="yearly-by-country">Yearly</Link>
+          <Link to="monthly-by-country">Monthly Stats By Country</Link>
+        </div>
+        <div>
+          <Link to="yearly-by-country">Yearly Stats By Country</Link>
         </div>
       </div>
     </section>
