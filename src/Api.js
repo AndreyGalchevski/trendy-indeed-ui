@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-let baseURL = 'http://127.0.0.1:3000/api';
+let baseURL = 'https://trendy-indeed-api.herokuapp.com/api';
 
 if (process.env.NODE_ENV === 'production') {
   baseURL = 'http://178.62.6.214:3000/api';
