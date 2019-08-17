@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import apiClient from '../../Api/apiClient';
+import apiClient from '../../api/apiClient';
 import BarChart from '../common/BarChart/BarChart';
 import Loader from '../common/Loader/Loader';
 
@@ -13,7 +13,7 @@ function YearlyByCountry() {
       const technologiesResponse = await apiClient.get('technologies');
       const countriesResponse = await apiClient.get('countries');
 
-      const statsResponse = await apiClient.get('stats?year=2019');
+      const statsResponse = await apiClient.get('stats/yearly?year=2019');
 
       const countryTotals = {};
 

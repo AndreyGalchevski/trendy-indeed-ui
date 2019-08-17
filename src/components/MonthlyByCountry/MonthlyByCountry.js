@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { MONTHS } from '../../constants/months';
 
-import apiClient from '../../Api/apiClient';
+import apiClient from '../../api/apiClient';
 import LineChart from '../common/LineChart/LineChart';
 import Loader from '../common/Loader/Loader';
 
@@ -13,7 +13,7 @@ function MonthlyByCountry() {
     async function init() {
       const technologiesResponse = await apiClient.get('technologies');
 
-      const statsResponse = await apiClient.get('stats?year=2019&country=il');
+      const statsResponse = await apiClient.get('stats/monthly?year=2019&country=il');
 
       const stats = technologiesResponse.data.map(tech => ({
         id: tech.name,
