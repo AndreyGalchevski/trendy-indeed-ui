@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { MONTHS } from '../../constants/months';
 
-import Api from '../../Api';
+import apiClient from '../../Api/apiClient';
 import LineChart from '../common/LineChart/LineChart';
 import Loader from '../common/Loader/Loader';
 
@@ -11,9 +11,9 @@ function MonthlyByCountry() {
 
   useEffect(() => {
     async function init() {
-      const technologiesResponse = await Api.get('technologies');
+      const technologiesResponse = await apiClient.get('technologies');
 
-      const statsResponse = await Api.get('stats?year=2019&country=il');
+      const statsResponse = await apiClient.get('stats?year=2019&country=il');
 
       const stats = technologiesResponse.data.map(tech => ({
         id: tech.name,
